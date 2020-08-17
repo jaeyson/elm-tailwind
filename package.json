@@ -1,0 +1,42 @@
+{
+  "name": "elm-tailwind",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "start": "npm run serve",
+    "serve": "cross-env NODE_ENV=development concurrently 'postcss src/tailwind.css -o dist/main.css --watch' 'live-server' 'npm run chokidar'",
+    "chokidar": "chokidar 'src/Main.elm' -c 'elm make src/Main.elm --output=dist/elm.js' --initial",
+    "development": "cross-env NODE_ENV=development postcss src/tailwind.css -o dist/main.css",
+    "production": "cross-env NODE_ENV=production postcss src/tailwind.css -o dist/main.min.css && npm run elm-build",
+    "elm-build": "src/optimize.sh src/Main.elm",
+    "test": "elm-format src/ --yes | elm-test",
+    "watch": "elm-test --watch",
+    "setup-git-hook": "hook=.git/hooks/pre-commit; if [ -f $hook.sample ]; then (mv $hook.sample $hook; echo 'done <renam></renam>ing'); else echo \"no changes needed \"; fi; chmod +x $hook && printf '#!/bin/sh\nset -e\nelm-format src/ --yes\nelm-test' > .git/hooks/pre-commit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayeson/elm-tailwind.git"
+  },
+  "keywords": [],
+  "author": "Jaeyson Anthony Y.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayeson/elm-tailwind/issues"
+  },
+  "homepage": "https://github.com/jayeson/elm-tailwind#readme",
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "autoprefixer": "^9.8.6",
+    "chokidar-cli": "^2.1.0",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
+    "elm-format": "^0.8.3",
+    "elm-test": "^0.19.1-revision2",
+    "live-server": "^1.2.1",
+    "postcss-cli": "^7.1.2",
+    "tailwindcss": "^1.8.5",
+    "uglify-js": "^3.10.4"
+  }
+}
