@@ -34,7 +34,7 @@
     "elm-format": "^0.8.4",
     "elm-test": "^0.19.1-revision4",
     "live-server": "^1.2.1",
-    "postcss": "^8.1.14",
+    "postcss": "^8.2.10",
     "postcss-cli": "^8.3.0",
     "purgecss": "^3.0.0",
     "tailwindcss": "^2.0.1",
